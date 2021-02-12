@@ -3,9 +3,18 @@
 INPUT_CONFIG_PATH="$1"
 CONFIG=""
 
+echo "PARAMETERS:"
+echo $INPUT_CONFIG_PATH
 # check if a custom config from a website was provided
 if [[ $INPUT_CONFIG_PATH == "http*" ]]; then
+  echo "CURL"
   curl $INPUT_CONFIG_PATH > $GITHUB_WORKSPACE/.rules.toml
+  echo $GITHUB_WORKSPACE 
+  echo "----------------------------------------------------------------"
+  ls $GITHUB_WORKSPACE
+  echo "----------------------------------------------------------------"
+  cat $GITHUB_WORKSPACE/.rules.toml
+  echo "----------------------------------------------------------------"
   $INPUT_CONFIG_PATH=".rules.toml"
 fi
 
